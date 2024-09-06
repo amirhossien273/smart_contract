@@ -1,0 +1,186 @@
+import React, { useState, useEffect } from 'react';
+import './App.css';
+import web3 from './web3';
+import rentalContract from './rentalHomeContract';
+
+function App() {
+
+  const [account, setAccount] = useState('');
+  const [tenantName, setTenantName] = useState('');
+  const [homeId, setHomeId] = useState('');
+  const [price, setPrice] = useState('');
+  const [priceType, setPriceType] = useState('');
+  const [priceType2, setPriceType2] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [nationalCode, setNationalCode] = useState('');
+  const [tenantPublicKey, setTenantPublicKey] = useState('');
+  const [landlordPublicKey, setLandlordPublicKey] = useState('');
+
+  useEffect(() => {
+    const loadAccount = async () => {
+      const accounts = await web3.eth.getAccounts();
+      setAccount(accounts[0]);
+      setHomeId(123);
+      setPrice('1000000');
+      setPriceType('TreRED323ERcdwEE');
+      setMobile('09197340692');
+      setNationalCode('04406585845');
+      setPriceType2('TreRED323ERcdwEE_eREsww');
+      setTenantPublicKey(accounts[1]);
+      setLandlordPublicKey(accounts[2]);
+    };
+    loadAccount();
+  }, []);
+
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    
+    await rentalContract.methods.setRentalAgreement(
+      homeId, 
+      price, 
+      priceType, 
+      priceType2, 
+      mobile, 
+      nationalCode, 
+      tenantPublicKey, 
+      landlordPublicKey
+    ).send({ 
+      from: account,
+      gas: 2000000, // تعیین حداکثر gas که مایل به مصرف آن هستید
+      gasPrice: web3.utils.toWei('20', 'gwei') // تعیین gasPrice به صورت دستی
+    });
+    
+    alert('Contract Set!');
+  };
+
+  return (
+    <div className="App">
+      <div>
+        <h2>Rental Contract DApp</h2>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Home ID:</label>
+            <input value={homeId} onChange={(e) => setHomeId(e.target.value)} />
+          </div>
+          <div>
+            <label>Price:</label>
+            <input value={price} onChange={(e) => setPrice(e.target.value)} />
+          </div>
+          <div>
+            <label>Price Type:</label>
+            <input value={priceType} onChange={(e) => setPriceType(e.target.value)} />
+          </div>
+          <div>
+            <label>Price Type 2:</label>
+            <input value={priceType2} onChange={(e) => setPriceType2(e.target.value)} />
+          </div>
+          <div>
+            <label>Mobile:</label>
+            <input value={mobile} onChange={(e) => setMobile(e.target.value)} />
+          </div>
+          <div>
+            <label>National Code:</label>
+            <input value={nationalCode} onChange={(e) => setNationalCode(e.target.value)} />
+          </div>
+          <div>
+            <label>Tenant Public Key:</label>
+            <input value={tenantPublicKey} onChange={(e) => setTenantPublicKey(e.target.value)} />
+          </div>
+          <div>
+            <label>Landlord Public Key:</label>
+            <input value={landlordPublicKey} onChange={(e) => setLandlordPublicKey(e.target.value)} />
+          </div>
+          <button type="submit">Set Rental Agreement</button>
+        </form>
+      </div>
+
+
+    <div className="contract-container">
+        <h1>قرارداد اجاره</h1>
+
+        <div className="section">
+            <h2>ماده 1 – طرفین قرارداد</h2>
+            <table>
+                <tr>
+                    <td>1-1 موجر/ موجرین</td>
+                    <td><input value={homeId} onChange={(e) => setHomeId(e.target.value)} /></td>
+                    <td>شماره شناسنامه</td>
+                    <td><input value={homeId} onChange={(e) => setHomeId(e.target.value)} /></td>
+                    <td>کد ملی</td>
+                    <td><input value={homeId} onChange={(e) => setHomeId(e.target.value)} /></td>
+                </tr>
+                <tr>
+                    <td>1-2 مستاجر/ مستاجرین</td>
+                    <td><input value={homeId} onChange={(e) => setHomeId(e.target.value)} /></td>
+                    <td>شماره شناسنامه</td>
+                    <td><input value={homeId} onChange={(e) => setHomeId(e.target.value)} /></td>
+                    <td>کد ملی</td>
+                    <td><input value={homeId} onChange={(e) => setHomeId(e.target.value)} /></td>
+                </tr>
+            </table>
+        </div>
+
+        <div className="section">
+            <h2>ماده 3 – مدت اجاره</h2>
+            <p>
+                مدت اجاره ماه/سال شمسی از تاریخ <input value={homeId} onChange={(e) => setHomeId(e.target.value)} /> 
+            </p>
+        </div>
+
+        <div className="section">
+            <h2>ماده 4 – اجاره بها و نحوه پرداخت</h2>
+            <table>
+                <tr>
+                    <td>مبلغ اجاره</td>
+                    <td><input value={homeId} onChange={(e) => setHomeId(e.target.value)} /></td>
+                </tr>
+            </table>
+        </div>
+
+        <div className="section">
+            <h2>ماده 5 – تسلیم مورد اجاره</h2>
+            <p>
+                موجر مکلف است در تاریخ <input value={homeId} onChange={(e) => setHomeId(e.target.value)} /> 
+            </p>
+        </div>
+
+
+        <div className="section">
+            <h2>ماده 7 – سقوط اختیارات</h2>
+            <p>كليه اختيارات ولو اختیار غبن به استثناء اختیار تدلیس از طرفین ساقط گردید.</p>
+        </div>
+        <div className="section">
+            <h2>ماده 9 – شهود</h2>
+            <p>شهود با مشخصات زیر این قرارداد را امضاء و گواهی می‌نماید...</p>
+        </div>
+ 
+
+        <div className="contract-details">
+          <div className="detail-row">
+              <span className="detail-label">2-4 مبلغ:</span>
+              <span className="detail-value">ریال</span>
+          </div>
+          <div className="detail-row">
+              <span className="detail-label">از طرف مستاجر/مستاجرین بعنوان قرض الحسنه:</span>
+              <span className="detail-value">نقداً/طی چک به شماره</span>
+          </div>
+          <div className="detail-row">
+              <span className="detail-label">بانک:</span>
+              <span className="detail-value"><input value={homeId} onChange={(e) => setHomeId(e.target.value)} /></span>
+          </div>
+          <div className="detail-row">
+              <span className="detail-label">تراکنش:</span>
+              <span className="detail-value"><input value={homeId} onChange={(e) => setHomeId(e.target.value)} /></span>
+          </div>
+          <div className="detail-row">
+              <span className="detail-label">تاریخ پرداخت: </span>
+              <span className="detail-value"><input value={homeId} onChange={(e) => setHomeId(e.target.value)} /></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;

@@ -1,0 +1,455 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "landlordAgreements",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "home_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "price_type",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "tenant_mobile",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "tenant_national_code",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "landlord_mobile",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "landlord_national_code",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "tenant_public_key",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "landlord_public_key",
+          "type": "address"
+        },
+        {
+          "internalType": "enum RentalHomeContract.ContractState",
+          "name": "state",
+          "type": "uint8"
+        },
+        {
+          "internalType": "bool",
+          "name": "tenantSigned",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "landlordSigned",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "tenantAgreements",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "home_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "price_type",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "tenant_mobile",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "tenant_national_code",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "landlord_mobile",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "landlord_national_code",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "tenant_public_key",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "landlord_public_key",
+          "type": "address"
+        },
+        {
+          "internalType": "enum RentalHomeContract.ContractState",
+          "name": "state",
+          "type": "uint8"
+        },
+        {
+          "internalType": "bool",
+          "name": "tenantSigned",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "landlordSigned",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_home_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_price",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "_price_type",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_tenant_mobile",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_tenant_national_code",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_landlord_mobile",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_landlord_national_code",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "_tenant_public_key",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_landlord_public_key",
+          "type": "address"
+        }
+      ],
+      "name": "setRentalAgreement",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_tenant_public_key",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_index",
+          "type": "uint256"
+        }
+      ],
+      "name": "signContractAsTenant",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_landlord_public_key",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_index",
+          "type": "uint256"
+        }
+      ],
+      "name": "signContractAsLandlord",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_landlord_public_key",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_index",
+          "type": "uint256"
+        }
+      ],
+      "name": "terminateContractAsLandlord",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_tenantPublicKey",
+          "type": "address"
+        }
+      ],
+      "name": "getAgreementsByTenant",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "home_id",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "price",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "price_type",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "tenant_mobile",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "tenant_national_code",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "landlord_mobile",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "landlord_national_code",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "tenant_public_key",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "landlord_public_key",
+              "type": "address"
+            },
+            {
+              "internalType": "enum RentalHomeContract.ContractState",
+              "name": "state",
+              "type": "uint8"
+            },
+            {
+              "internalType": "bool",
+              "name": "tenantSigned",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "landlordSigned",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct RentalHomeContract.RentalAgreement[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_landlordPublicKey",
+          "type": "address"
+        }
+      ],
+      "name": "getAgreementsByLandlord",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "home_id",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "price",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "price_type",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "tenant_mobile",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "tenant_national_code",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "landlord_mobile",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "landlord_national_code",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "tenant_public_key",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "landlord_public_key",
+              "type": "address"
+            },
+            {
+              "internalType": "enum RentalHomeContract.ContractState",
+              "name": "state",
+              "type": "uint8"
+            },
+            {
+              "internalType": "bool",
+              "name": "tenantSigned",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "landlordSigned",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct RentalHomeContract.RentalAgreement[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_tenant_public_key",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_index",
+          "type": "uint256"
+        }
+      ],
+      "name": "getContractState",
+      "outputs": [
+        {
+          "internalType": "enum RentalHomeContract.ContractState",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ]
+}
